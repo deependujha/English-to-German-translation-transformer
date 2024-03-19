@@ -5,9 +5,9 @@ export async function POST( request: Request ) {
     try {
         const res = await request.json()
         const sentence_to_be_translated = res[ 'sentence' ]
-        console.log( `Sentence to be translated: ${sentence_to_be_translated}` )
+        // console.log( `Sentence to be translated: ${sentence_to_be_translated}` )
 
-        const result = await axios.post( "http://localhost:8000/translate", {
+        const result = await axios.post( "http://backend/translate", {
             "english_sentence": sentence_to_be_translated
         } )
 

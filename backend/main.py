@@ -1,5 +1,7 @@
 import os
 from dotenv import load_dotenv
+from datetime import datetime
+from zoneinfo import ZoneInfo
 from fastapi import FastAPI, HTTPException
 
 # =======================
@@ -35,8 +37,14 @@ async def create_item(english_text: GetTranslateModel):
 
     temp_hin_txt = eng_txt + "-- in hindi"
 
+    dtobj = datetime.now(tz=ZoneInfo("Asia/Kolkata"))
+
     new_translation = await my_collection_client.insert_one(
-        {"english_sentence": eng_txt, "translated_hindi_sentence": temp_hin_txt}
+        {
+            "english_sentence": eng_txt,
+            "translated_hindi_sentence": temp_hin_txt,
+            "created_at": dtobj,
+        }
     )
 
     new_created_translation = await my_collection_client.find_one(

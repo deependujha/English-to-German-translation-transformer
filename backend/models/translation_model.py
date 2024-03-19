@@ -3,6 +3,7 @@ Contains the TranslationModel class.
 """
 
 from typing import Optional, Annotated
+from datetime import datetime
 from pydantic import ConfigDict, BaseModel, Field
 from pydantic.functional_validators import BeforeValidator
 
@@ -22,6 +23,8 @@ class TranslationModel(BaseModel):
     id: Optional[PyObjectId] = Field(alias="_id", default=None)
     english_sentence: str = Field(..., max_length=100)
     translated_hindi_sentence: str = Field(..., max_length=100)
+    created_at: Optional[datetime] = Field(default=None)
+    
     model_config = ConfigDict(
         populate_by_name=True,
         arbitrary_types_allowed=False,
