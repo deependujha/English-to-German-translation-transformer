@@ -23,8 +23,8 @@ const TranslatorComponent = () => {
 			const response = await axios.post('/api', {
 				sentence: mySentence,
 			});
-			// console.log(response.data);
-			setMyTranslation(response.data.translation);
+			console.log(response.data);
+			setMyTranslation(response.data.translated_hindi_sentence);
 		} catch (err) {
 			console.log(err);
 			setMyTranslation('');

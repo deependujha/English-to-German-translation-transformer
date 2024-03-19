@@ -1,4 +1,5 @@
 import { stat } from "fs";
+import axios from "axios";
 
 export async function POST( request: Request ) {
     try {
@@ -6,9 +7,11 @@ export async function POST( request: Request ) {
         const sentence_to_be_translated = res[ 'sentence' ]
         console.log( `Sentence to be translated: ${sentence_to_be_translated}` )
 
-        return Response.json( {
-            "translation": "लव इज इन द एयर"
-        }, { status: 200 } )
+        const result = await axios.post( "http://localhost:8000/translate", {
+            "english_sentence": sentence_to_be_translated
+        } )
+
+        return Response.json( result.data, { status: 200 } )
     }
     catch ( err ) {
         let msg = ""
