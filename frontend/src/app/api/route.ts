@@ -1,5 +1,6 @@
 import { stat } from "fs";
 import axios from "axios";
+import { NextResponse } from 'next/server'
 
 export async function POST( request: Request ) {
     try {
@@ -11,7 +12,7 @@ export async function POST( request: Request ) {
             "english_sentence": sentence_to_be_translated
         } )
 
-        return Response.json( result.data, { status: 200 } )
+        return NextResponse.json( result.data, { status: 200 } )
     }
     catch ( err ) {
         let msg = ""
@@ -21,7 +22,7 @@ export async function POST( request: Request ) {
         else {
             msg = String( err )
         }
-        return Response.json( {
+        return NextResponse.json( {
             "status": "Error translating sentence",
             "error": msg
         }, { status: 400 } )
