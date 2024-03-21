@@ -14,7 +14,7 @@ PyObjectId = Annotated[str, BeforeValidator(str)]
 
 class TranslationModel(BaseModel):
     """
-    Translation model that represents a translation from English to Hindi.
+    Translation model that represents a translation from English to German.
     """
 
     # The primary key for the StudentModel, stored as a `str` on the instance.
@@ -22,16 +22,16 @@ class TranslationModel(BaseModel):
     # but provided as `id` in the API requests and responses.
     id: Optional[PyObjectId] = Field(alias="_id", default=None)
     english_sentence: str = Field(..., max_length=100)
-    translated_hindi_sentence: str = Field(..., max_length=100)
+    translated_german_sentence: str = Field(..., max_length=100)
     created_at: Optional[datetime] = Field(default=None)
-    
+
     model_config = ConfigDict(
         populate_by_name=True,
         arbitrary_types_allowed=False,
         json_schema_extra={
             "example": {
-                "english_sentence": "This is a test sentence.",
-                "translated_hindi_sentence": "यह एक परीक्षण वाक्य है।",
+                "english_sentence": "A group of people standing in front of an igloo ",
+                "translated_german_sentence": "Ein Liveauftritt wird von einem Badmintonball .",
             }
         },
     )

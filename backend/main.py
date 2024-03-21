@@ -3,6 +3,7 @@ from dotenv import load_dotenv
 from datetime import datetime
 from zoneinfo import ZoneInfo
 from fastapi import FastAPI, HTTPException
+from translation_model_inference.main_prediction_code import endpoint_to_translate
 
 # =======================
 from database_connection.conn import get_collection_client
@@ -35,14 +36,14 @@ async def create_item(english_text: GetTranslateModel):
     """_summary_"""
     eng_txt = english_text.english_sentence
 
-    temp_hin_txt = eng_txt + "-- in hindi"
+    german_sentence = endpoint_to_translate(eng_txt)
 
     dtobj = datetime.now(tz=ZoneInfo("Asia/Kolkata"))
 
     new_translation = await my_collection_client.insert_one(
         {
             "english_sentence": eng_txt,
-            "translated_hindi_sentence": temp_hin_txt,
+            "translated_german_sentence": german_sentence,
             "created_at": dtobj,
         }
     )

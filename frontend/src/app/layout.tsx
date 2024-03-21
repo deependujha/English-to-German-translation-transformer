@@ -5,9 +5,9 @@ import './globals.css';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-	title: 'English to Hindi translator',
+	title: 'English to German translator',
 	description:
-		'English to Hindi translator is a free online tool that helps you translate English text into Hindi. It is easy to use and provides accurate translations. Try it today!',
+		'English to German translator is a free online tool that helps you translate English text into German. It is easy to use and provides accurate translations. Try it today!',
 };
 
 export default function RootLayout({

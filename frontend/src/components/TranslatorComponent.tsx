@@ -24,7 +24,7 @@ const TranslatorComponent = () => {
 				sentence: mySentence,
 			});
 			console.log(response.data);
-			setMyTranslation(response.data.translated_hindi_sentence);
+			setMyTranslation(response.data.translated_german_sentence);
 		} catch (err) {
 			console.log(err);
 			setMyTranslation('');
@@ -57,12 +57,12 @@ const TranslatorComponent = () => {
 						endContent={<HeartIcon fill="red" />}
 						onClick={handleTranslate}
 					>
-						translate english to hindi
+						translate english to german
 					</Button>
 				)}
 
 				<Textarea
-					label="Hindi translation"
+					label="German translation"
 					className="max-w-lg my-4"
 					value={myTranslation}
 					onChange={(e) => {}}

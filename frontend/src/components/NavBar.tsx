@@ -41,7 +41,7 @@ export default function NavBar() {
 					<Button
 						as={Link}
 						color="primary"
-						href="https://github.com/deependujha/English-to-Hindi-translation-transformer"
+						href="https://github.com/deependujha/English-to-German-translation-transformer"
 						variant="flat"
 						target="_blank"
 					>
