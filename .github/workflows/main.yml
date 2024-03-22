@@ -15,7 +15,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: list files
-      run: ls -lah
+      run: ls backend/translation_model_inference -lah
     # - name: build the docker image with latest tag
     #   run: sudo docker build -t meow-meow-ec2-ci-cd .
     # - name: Stop existing container on port 80 (if running)
