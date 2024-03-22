@@ -17,7 +17,7 @@ jobs:
     - name: make .env file available
       run:  |
           touch backend/.env
-          echo ${{ secrets.DB_ENV }}>backend/.env
+          echo "MONGODB_URL=${{ secrets.MONGODB_URL }}">backend/.env
     # - name: Copy model file
     #   run: cp /home/ubuntu/model_english_to_german.pt backend/translation_model_inference
     # - name: build the docker compose image
