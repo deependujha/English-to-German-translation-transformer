@@ -16,8 +16,7 @@ jobs:
     - uses: actions/checkout@v3
     - name: make .env file available
       run:  |
-          touch backend/.env
-          echo "MONGODB_URL=${{ secrets.MONGODB_URL }}">backend/.env
+          cp /home/ubuntu/my-backend.env backend/.env
     # - name: Copy model file
     #   run: cp /home/ubuntu/model_english_to_german.pt backend/translation_model_inference
     # - name: build the docker compose image
