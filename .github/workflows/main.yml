@@ -1,0 +1,27 @@
+
+name: English to German translator CI/CD
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+
+    runs-on: self-hosted
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: list files
+      run: ls -lah
+    # - name: build the docker image with latest tag
+    #   run: sudo docker build -t meow-meow-ec2-ci-cd .
+    # - name: Stop existing container on port 80 (if running)
+    #   run: |
+    #       if [[ $(sudo docker ps -q -f publish=80) ]]; then
+    #       sudo docker stop $(docker ps -q -f publish=80)
+    #       fi
+    # - name: run the docker container on port 80 and bye bye
+    #   run: sudo docker run -d -p 80:3000 --rm meow-meow-ec2-ci-cd
