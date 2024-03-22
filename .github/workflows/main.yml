@@ -24,4 +24,4 @@ jobs:
     - name: Stop existing docker compose container and delete images
       run: sudo docker compose -f docker-compose-prod.yaml down # --rmi local
     - name: run the docker compose container on port 80 and bye bye
-      run: sudo docker compose -f docker-compose-prod.yaml up
+      run: sudo docker compose -f docker-compose-prod.yaml up -d
