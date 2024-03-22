@@ -4,7 +4,7 @@ services:
       context: ./frontend
       dockerfile: docker/Dockerfile.prod
     ports:
-      - "80:3000"
+      - "3000:3000"
   
   backend:
     build:
