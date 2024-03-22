@@ -16,12 +16,9 @@ jobs:
     - uses: actions/checkout@v3
     - name: Copy model file
       run: cp /home/ubuntu/model_english_to_german.pt backend/translation_model_inference
-    # - name: build the docker image with latest tag
-    #   run: sudo docker build -t meow-meow-ec2-ci-cd .
-    # - name: Stop existing container on port 80 (if running)
-    #   run: |
-    #       if [[ $(sudo docker ps -q -f publish=80) ]]; then
-    #       sudo docker stop $(docker ps -q -f publish=80)
-    #       fi
-    # - name: run the docker container on port 80 and bye bye
-    #   run: sudo docker run -d -p 80:3000 --rm meow-meow-ec2-ci-cd
+    - name: build the docker compose image
+      run: sudo docker compose -f docker-compose-prod.yaml build --no-cache
+    - name: Stop existing docker compose container and delete images
+      run: sudo docker compose -f docker-compose-prod.yaml down --rmi local
+    - name: run the docker compose container on port 80 and bye bye
+      run: sudo docker compose -f docker-compose-prod.yaml up
